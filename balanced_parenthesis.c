@@ -41,6 +41,10 @@ int main()
     {
         printf("The string is balanced ");
     }
+    else
+    {
+        printf("The string is not balanced ");
+    }
 }
 char is_open(char x)
 {
