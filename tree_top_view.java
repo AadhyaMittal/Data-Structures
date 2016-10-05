@@ -1,4 +1,6 @@
-//To show the TOP VIEW of a BST
+//To show the TOP VIEW of a tree
+//Does not work for a BST 
+
 
 /*
    class Node 
