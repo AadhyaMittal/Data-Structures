@@ -18,6 +18,11 @@ void insert_beg(struct node **head, int data)
 
 void print(struct node *head)
 {
+    if(head == NULL)
+    {
+        printf("List is empty \n");
+        return;
+    }
     while(head != NULL)
     {
         printf("%d ", head -> data);
