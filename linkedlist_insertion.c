@@ -18,6 +18,11 @@ void insert_beg(struct node **head, int data)                    //complexity --
 
 void print(struct node *head)
 {
+    if(head == NULL)
+    {
+        printf("List is empty \n");
+        return;
+    }
     while(head != NULL)
     {
         printf("%d ", head -> data);
@@ -59,6 +64,7 @@ void insert_end(struct node **head, int data)                       //complexity
 int main()
 {
     struct node *head = NULL;
+    print(head);
     insert_beg(&head, 5);
     insert_beg(&head, 7);
     insert_beg(&head, 11);
