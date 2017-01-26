@@ -18,7 +18,7 @@ void printList(struct node *head)
 
 }
 
-void insert_beg(struct node **head, int data)
+void insert_beg(struct node **head, int data)                                   //complexity -- O(1)
 {
     struct node *new_node = (struct node*)malloc(sizeof(struct node));
     new_node -> data = data;
@@ -26,7 +26,7 @@ void insert_beg(struct node **head, int data)
     *head = new_node;
 }
 
-void insert_end(struct node **head, int data)
+void insert_end(struct node **head, int data)                                   //complexity -- O(1)
 {
     struct node *new_node = (struct node*)malloc(sizeof(struct node));
     new_node -> data = data;
@@ -44,7 +44,7 @@ void insert_end(struct node **head, int data)
     last -> next = new_node;
 }
 
-void insert_after(struct node *prev_node, int data)
+void insert_after(struct node *prev_node, int data)                             //complexity -- O(n)
 {
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
     if(prev_node == NULL)
