@@ -7,18 +7,8 @@ struct node
     int data;
     struct node *next;
 };
-void printList(struct node *head)
-{
-    struct node *last = head;
-    while(last != NULL)
-    {
-        printf("%d ", last -> data);
-        last = last->next;
-    }
 
-}
-
-void insert_beg(struct node **head, int data)                                   //complexity -- O(1)
+void insert_beg(struct node **head, int data)                    //complexity -- O(1)
 {
     struct node *new_node = (struct node*)malloc(sizeof(struct node));
     new_node -> data = data;
@@ -26,44 +16,58 @@ void insert_beg(struct node **head, int data)                                   
     *head = new_node;
 }
 
-void insert_end(struct node **head, int data)                                   //complexity -- O(1)
+void print(struct node *head)
 {
+    while(head != NULL)
+    {
+        printf("%d ", head -> data);
+        head = head -> next;
+    }
+}
+
+void insert_after(struct node *prev_node, int data)                 //complexity -- O(1)
+{
+    if(prev_node == NULL)
+    {
+        printf("previous Node can not be NULL \n");
+        return;
+    }
     struct node *new_node = (struct node*)malloc(sizeof(struct node));
     new_node -> data = data;
+    new_node -> next = prev_node -> next;
+    prev_node -> next = new_node;
+}
+
+void insert_end(struct node **head, int data)                       //complexity -- O(n)
+{
+    struct node *new_node = (struct node*)malloc(sizeof(struct node));
+    struct node *prev = *head;
+    new_node -> data = data;
     new_node -> next = NULL;
-    struct node *last = *head;
     if(*head == NULL)
     {
         *head = new_node;
         return;
     }
-    while(last -> next != NULL)
+    while(prev -> next != NULL)
     {
-        last = last -> next;
+        prev = prev -> next;
     }
-    last -> next = new_node;
+    prev -> next  = new_node;
 }
 
-void insert_after(struct node *prev_node, int data)                             //complexity -- O(n)
-{
-    struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    if(prev_node == NULL)
-    {
-        printf("prev_node can not be NULL");
-        return;
-    }
-    new_node -> data = data;
-    new_node -> next = prev_node -> next;
-    prev_node -> next = new_node;
-}
 int main()
 {
     struct node *head = NULL;
-    insert_beg(&head,2);
-    insert_beg(&head,5);
-    insert_beg(&head,1);
-    insert_after(head -> next,15);
-    insert_end(&head,8);
-    insert_end(&head,18);
-    printList(head);
+    insert_beg(&head, 5);
+    insert_beg(&head, 7);
+    insert_beg(&head, 11);
+    print(head);
+    printf("\n");
+    insert_after(head, 1);
+    print(head);
+    printf("\n");
+    insert_end(&head, 99);
+    print(head);
+    printf("\n");
 }
