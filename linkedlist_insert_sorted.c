@@ -46,7 +46,7 @@ void insert_sorted(struct node **head, int data)
     new_node -> data = data;
     struct node *temp = *head;
     struct node *prev;
-    if(*head == NULL)
+    if(*head == NULL)                       //if the list is empty
     {
         new_node -> next = NULL;
         *head = new_node;
@@ -57,7 +57,7 @@ void insert_sorted(struct node **head, int data)
         prev = temp;
         temp = temp -> next;
     }
-    if(temp == *head)
+    if(temp == *head)                           //if the element to be added is less than the first element of the linked list
     {
         new_node -> next = *head;
         *head = new_node;
